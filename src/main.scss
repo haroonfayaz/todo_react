@@ -1,0 +1,132 @@
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+.main_div{
+    background-color: burlywood;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.inner_div{
+    width: 40rem;
+    height: 50rem;
+    box-shadow: rgba(0, 0, 0, 0.1) .0rem -2.3rem 2.5rem .0rem inset, rgba(0, 0, 0, 0.15) .0rem -3.6rem 3.0rem .0rem inset, rgba(0, 0, 0, 0.1) .0rem -7.9rem 4.0rem .0rem inset, rgba(0, 0, 0, 0.06) .0rem .2rem .1rem, rgba(0, 0, 0, 0.09) .0rem .4rem .2rem, rgba(0, 0, 0, 0.09) .0rem .8rem .4rem, rgba(0, 0, 0, 0.09) .0rem 1.6rem .8rem, rgba(0, 0, 0, 0.09) .0rem 3.2rem 1.6rem;    
+    padding: 3rem ;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: blanchedalmond;
+    border-radius: 3rem;
+
+    p{
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+   
+    .input_with_icon {
+        position: relative;
+      }
+      input {
+        place-items: center;
+        margin-top: 2rem;
+        border-radius: 2rem;
+        outline: none;
+        border: none;
+        text-align: center; 
+        height: 4rem;
+        width: 30rem;
+        margin-left: 4rem;
+        background-color: #c9bde6;
+    }
+      
+      /* Style for the Font Awesome icon */
+      .icon {
+        position: absolute;
+        top: 65%;
+        right: 2rem; /* Adjust the value as needed to control the icon's position */
+        transform: translateY(-50%);
+        font-size: 3.5rem; /* Adjust the font-size to increase the icon's size */
+        color: #25467e;
+      }
+ 
+}
+.showItems {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .eachItem {
+    display: flex;
+    align-items: center;
+  }
+  h2{
+    font-size: 2.5rem; /* Adjust the font-size to increase the icon's size */
+    color: #25467e;
+    padding: 1.2rem ;
+  }
+  h2:hover{
+    font-size: 2.5rem; /* Adjust the font-size to increase the icon's size */
+    color: #a8b8d3;
+    padding: 1.2rem ;
+  }
+  .del_icon {
+    margin-left: 1rem;
+    font-size: 2.5rem; /* Adjust the font-size to increase the icon's size */
+    color: #25467e;
+  }
+  .del_icon:hover{
+    color: #a8b8d3;
+
+
+  }
+  .btn{
+        display: inline-block;
+        margin-top:2rem;
+        font-size: 2.5rem;
+        padding: 1rem 1rem;
+        color: rgb(21, 84, 94);
+        background-color: white;
+        border-radius: 2.0rem;
+        text-decoration: none;
+        transition: ease 0.30s;
+        width: 20rem;
+
+        margin-left: 10rem;
+      }
+      .btn:hover{
+      background-color: blueviolet;
+      color: darkred;
+      }
+    //   .btn::before {
+    //     content: "Check List";
+    //   }
+      
+      .btn:hover::before {
+        content: "Delete All";
+      }
+ 
+
+@media only screen and (max-width: 768px) {
+	
+    html{
+        font-size: 45%;
+    }		
+    }
+    
+    @media only screen and (max-width: 998px) {
+        
+        html{
+            font-size: 55%;
+        }		
+        }
