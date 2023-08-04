@@ -11,7 +11,7 @@ html{
 .main_div{
     background-color: burlywood;
     width: 100vw;
-    height: 100vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,7 +87,11 @@ html{
   .del_icon:hover{
     color: #a8b8d3;
 
-
+  }
+  .edit_icon {
+    margin-left: 1rem;
+    font-size: 2.5rem; /* Adjust the font-size to increase the icon's size */
+    color: #25467e;
   }
   .btn{
         display: inline-block;

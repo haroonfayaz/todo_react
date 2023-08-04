@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus,faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPlus,faTrash,faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const getLocalItems=()=>{
   let list =localStorage.getItem("lists")
@@ -15,20 +15,51 @@ const getLocalItems=()=>{
 const Todo = () => {
   const [inputData,setInputData]=useState("");
   const [items,setItems]=useState(getLocalItems());
+  const [toggleSubmitBtn,setToggleSubmitBtn]=useState(true);
+  const [EditItem,setEditItem]=useState(null);
+
   const addItem=()=>{
-    if (!inputData){}
+    if (!inputData){
+      alert("please fill item")
+    }else if(inputData && !toggleSubmitBtn){
+      setItems(
+        items.map((elem)=>{
+          if (elem.id === EditItem){
+            return{...elem,name:inputData}
+          }
+          return elem;
+
+        }))
+        setToggleSubmitBtn(true);
+        setInputData(" ");
+        setEditItem(null);
+    }
     else{
-    setItems([...items,inputData]);
+      const allInputData={id:new Date().getTime().toString(),name:inputData}
+    setItems([...items,allInputData]);
     setInputData("")}
     }
 
-    const deleteItem =(id)=>{
-      const updatedItems=items.filter((elem,ind)=>{
-        return ind !==id;
+    const deleteItem =(index)=>{
+      const updatedItems=items.filter((elem)=>{
+        return index !==elem.id;
 
       });
       setItems(updatedItems);
     }
+
+
+    const editItem =(id)=>{
+      let newEditItem =items.find((elem)=>{
+        return elem.id===id;
+
+      })
+      setToggleSubmitBtn(false);
+      setInputData(newEditItem.name);
+      setEditItem(id);
+    }
+
+
     const removeAll =()=>{
       setItems([]);
 
@@ -49,15 +80,19 @@ const Todo = () => {
             value={inputData}
             onChange={(e)=>setInputData(e.target.value)}
           />
-          <FontAwesomeIcon icon={faPlus} className="icon" title='Add Items' onClick={addItem}/>
+          {
+            toggleSubmitBtn ? <FontAwesomeIcon icon={faPlus} className="icon" title='Add Items' onClick={addItem}/> : <FontAwesomeIcon icon={faEdit} className="edit_icon" title='Update Item' onClick={addItem} />
+
+          }
         </div>
         <div className="showItems">
         {
-          items.map((elem ,ind)=>{
+          items.map((elem)=>{
             return(
-            <div className="eachItem" key={ind}>
-            <h2>{elem}</h2>
-            <FontAwesomeIcon icon={faTrash} className="del_icon" title='Delete Items' onClick={()=>deleteItem(ind)}/>
+            <div className="eachItem" key={elem.id}>
+            <h2>{elem.name}</h2>
+            <FontAwesomeIcon icon={faEdit} className="edit_icon" title='Edit Item' onClick={() => editItem(elem.id)} />
+            <FontAwesomeIcon icon={faTrash} className="del_icon" title='Delete Item' onClick={()=>deleteItem(elem.id)}/>
           </div>)
           }
           )
